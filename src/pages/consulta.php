@@ -1,5 +1,6 @@
 <?php
 include_once('../../BD/conexao.php');
+require '../../control/tarefa_controller.php';
 ?>
 <?php
 session_start();
@@ -29,6 +30,8 @@ $result = $conexao->query($sql);
     <script class="u-script" type="text/javascript" src="../../nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.3.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script type="application/ld+json">
@@ -37,8 +40,9 @@ $result = $conexao->query($sql);
             "@type": "Organization",
             "name": "",
             "logo": "../../images/CORELLOGOpSK-Cpia2.png"
-        }
+        }        
     </script>
+
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="consulta">
     <meta property="og:type" content="website">
@@ -134,7 +138,7 @@ $result = $conexao->query($sql);
                        <form action="../../BD/exluir.php" method="GET">
                         <tr style="height: 57px;">
                 
-                        <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell "> <?= $user_data['id']?></td>
+                        <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell "><?=$user_data['id']?> </td>
 
                             <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell"> <?= $user_data['LOJA']?></td>
                             <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell"> <?= $user_data['PECA']?></td>
@@ -148,24 +152,23 @@ $result = $conexao->query($sql);
                             <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell"><?= $user_data['DATA']?></td>
                             <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell"><?= $user_data['HORA']?></td>
                             <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell"><?= $user_data['NOME']?></td>
-                            <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell"> <?php   echo "<span><a href='consulta.php?id=".$user_data['id']."'>Delete</a></span>"  ?></td>
+                            <td class="u-border-2 u-border-black u-border-no-left u-border-no-right u-table-cell">
+                                 <a href="consulta.php?id=<?=$user_data['id']?> ">
+                                 <i class="bi bi-trash"  ></i>
+                                </a></td>
                         </tr>
                    
                         <?php }?>
                     </form>
                     </tbody>
-                        
+                    
                 </table>
             </div>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-e89e">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">DESENVOLVIDO POR ANDERSON NUNES&nbsp;</p>
-        </div>
-    </footer>
+
 
 </body>
 
